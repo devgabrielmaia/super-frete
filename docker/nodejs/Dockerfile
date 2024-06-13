@@ -3,7 +3,6 @@ LABEL maintainer="Gabriel Maia"
 WORKDIR /app
 RUN apk update \
     && apk --no-cache add curl \
-    && apk --no-cache add postgresql-dev \
     && apk --no-cache add python3 py3-pip \
     && apk --no-cache add make \
     && apk --no-cache add g++
