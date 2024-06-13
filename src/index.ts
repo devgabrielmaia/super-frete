@@ -8,6 +8,7 @@ import { Express } from 'express-serve-static-core';
 import { AdminFirestore } from '@src/libs/firebase/admin-firestore.service';
 import { firestore } from 'firebase-admin';
 import { TriggerProps, triggers } from '@src/libs/firebase/trigger.provider';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import QueryDocumentSnapshot = firestore.QueryDocumentSnapshot;
 
 const expressServer = express();
@@ -17,6 +18,13 @@ async function bootstrap(expressInstance: Express): Promise<void> {
     AppModule,
     new ExpressAdapter(expressInstance),
   );
+  const documentBuilder = new DocumentBuilder()
+    .setTitle('SuperFrete - Technical Test')
+    .setDescription('API Test - SuperFrete')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, documentBuilder);
+  SwaggerModule.setup('docs', app, document);
   await app.init();
 }
 

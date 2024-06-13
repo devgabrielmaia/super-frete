@@ -42,7 +42,7 @@ export class LibModule implements OnModuleInit {
   async onModuleInit() {
     const counterRef = this.db
       .collection(AutoIncrementEnum.index)
-      .doc('productsIncrement');
+      .doc('catalogIncrement');
     const counterDoc = await counterRef.get();
     if (!counterDoc.exists) {
       await counterRef.set({ current: 0 });

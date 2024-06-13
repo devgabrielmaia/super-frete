@@ -26,10 +26,10 @@ export type TriggerProps = {
 export const triggers: TriggerProps[] = [
   {
     func: autoIncrementTrigger,
-    onDocument: 'test/{docId}',
+    onDocument: 'catalog/{docId}',
     when: 'onCreate',
     options: {
-      targetCollection: 'productsIncrement',
+      targetCollection: 'catalogIncrement',
       fieldId: 'increment_id',
     },
   },
