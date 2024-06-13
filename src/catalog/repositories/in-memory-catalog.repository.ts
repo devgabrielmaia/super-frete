@@ -15,6 +15,16 @@ export class InMemoryCatalogRepository implements CatalogRepositoryInterface {
     return Promise.resolve(true);
   }
   search(filter: Filter): Promise<CatalogSchema[]> {
+    if (filter.id) {
+      return Promise.resolve(
+        this.products.filter((product) => product.id === filter.id),
+      );
+    }
+    if (filter.name) {
+      return Promise.resolve(
+        this.products.filter((product) => product.name === filter.name),
+      );
+    }
     return Promise.resolve(this.products);
   }
 }

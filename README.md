@@ -17,6 +17,8 @@ $ npm install
 $ npm run serve
 ```
 
+the application will run on *http://127.0.0.1:5001/superfrete-a15bd/us-central1/api*
+
 ## Test
 
 ```bash
@@ -29,7 +31,7 @@ $ npm run test:cov
 
 ## API Documentation
 ```bash
-http://localhost:3000/api-docs
+http://127.0.0.1:5001/superfrete-a15bd/us-central1/api/docs
 ```
 
 ## Insomnia Collection
