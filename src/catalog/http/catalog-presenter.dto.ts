@@ -37,6 +37,7 @@ export class CatalogSearch {
 }
 
 export class CatalogResponse {
+  @ApiProperty({ type: [CatalogResource] })
   data: CatalogResource[];
 
   constructor(data: CatalogResource[]) {
