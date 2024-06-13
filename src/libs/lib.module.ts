@@ -24,12 +24,6 @@ import Firestore = firestore.Firestore;
         // };
         const appFirestore = AdminFirestore.getInstance().getAdmin();
         return appFirestore.firestore();
-        // if (process.env.NODE_ENV === 'development') {
-        //   app.firestore().settings({
-        //     host: 'localhost:8080',
-        //     ssl: false,
-        //   });
-        // }
       },
       inject: [ConfigService],
     },
