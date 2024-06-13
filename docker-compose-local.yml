@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  catalog:
+    build:
+      context: ./docker/nodejs
+      dockerfile: Dockerfile.local
+    container_name: catalog
+    tty: true
+    ports:
+      - 5001:5001
+      - 4000:4000
+    volumes:
+      - ${PWD}:/app

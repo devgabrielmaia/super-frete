@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    environment: stage
+
+    name: Build Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Create env file
+        run: mv .env-example .env
+
+      - name: Pre-Build
+        run: docker build --build-arg ENV_FILE=.env --target runner -t catalog/app-runner -f docker/nodejs/Dockerfile .
+
+      - name: Tests
+        run: |
+          docker run --rm catalog/app-runner npm run test test/feature
+
+      - name: Coverage
+        run: |
+          docker run --rm catalog/app-runner npm run test:cov
+
+      - name: Prettier
+        run: |
+          docker run --rm catalog/app-runner npm run format
+
+      - name: Lint
+        run: |
+          docker run --rm catalog/app-runner npm run lint

@@ -1,0 +1,10 @@
+FROM node:20.12.2
+LABEL maintainer="Gabriel Maia"
+WORKDIR /app
+
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk && \
+    apt-get install openjdk-17-jre && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN npm i -g firebase-tools
